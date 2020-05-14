@@ -149,6 +149,9 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  changeGrade(student) {
+    student.grade = Math.round(Math.random() * 100);
+  }
 }
 
 /*
@@ -172,6 +175,7 @@ class Student extends Lambdasian{
     this.previousBackground = obj.previousBackground;
     this.className = obj.className;
     this.favSubjects = obj.favSubjects;
+    this.grade = 50;
   }
   listSubjects(){
     let retStr = `Loving `
@@ -189,6 +193,13 @@ class Student extends Lambdasian{
   }
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
+  }
+  graduate(){ 
+    if(this.grade > 70) {
+      return `${this.name} graduated!`
+    } else {
+      return `${this.name} needs to increase their score.`
+    }
   }
 }
 
@@ -228,6 +239,11 @@ class ProjectManager extends Instructor {
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 
+const liz = new Student({name: "Liz"});
+const jane = new ProjectManager({name: "Jane"});
+jane.changeGrade(liz);
+console.log(liz.grade);
+console.log(liz.graduate());
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
