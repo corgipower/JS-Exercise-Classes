@@ -150,8 +150,14 @@ class Instructor extends Lambdasian {
     return `${student.name} receives a perfect score on ${subject}`;
   }
   changeGrade(student) {
-    student.grade = Math.round(Math.random() * 100);
+    student.grade += getRandom(-50, 50);
   }
+}
+
+function getRandom(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /*
@@ -244,6 +250,7 @@ const jane = new ProjectManager({name: "Jane"});
 jane.changeGrade(liz);
 console.log(liz.grade);
 console.log(liz.graduate());
+
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
